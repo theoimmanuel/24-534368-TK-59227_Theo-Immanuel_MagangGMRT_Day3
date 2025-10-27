@@ -107,11 +107,6 @@ void loop() {
   unsigned long currentTime = 0;
   dt = currentTime - prevTime;
   prevTime = currentTime;
-   
-  //data kecepatan sudut --> ngubah pengukuran radian ke derajaat
-  gyroX = g.gyro.x * 180.0 / PI;
-  gyroY = g.gyro.y * 180.0 / PI;
-  gyroZ = g.gyro.z * 180.0 / PI;
   
   //hitung perubahan di tiap sumbu --> s = v.t
   roll += gyroX * dt;
@@ -123,7 +118,7 @@ void loop() {
   pitch = constrain(pitch, -90, 90);
   yaw = constrain(yaw, -90, 90);
   
-  //jalankan fungsi ControlServos --> mengontrol gerakan servo
+  //jalankan fungsi controlServos --> mengontrol gerakan servo
   controlServos();
   
   delay(100); //delay antar pengukuran

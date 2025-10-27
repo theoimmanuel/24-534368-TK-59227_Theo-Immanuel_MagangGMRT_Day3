@@ -57,7 +57,7 @@ void controlServos() { //fungsi untuk mengontrol gerakan servo
 void detectExternalMovement() { //fungsi deteksi dan kontrol terhadap external movement
   
   sensors_event_t a, g, temp; //baca data dari sensor 
-  mpu.getEvent(&a, &g, &temp); //ada accel, gyro, sama temp (ga dipake)
+  mpu.getEvent(&a, &g, &temp); //ada accel, gyro (ga dipake), sama temp (ga dipake)
   
   //total accel (√(x² + y² + z²))
   float totalAccel = sqrt(a.acceleration.x * a.acceleration.x + 
@@ -99,9 +99,9 @@ void setup() {
 }
 
 void loop() {
-  //sensor event --> ambil accel sama gyro
+  //sensor event --> ambil gyro aja
   sensors_event_t a, g, temp; //baca data dari sensor 
-  mpu.getEvent(&a, &g, &temp); //ada accel, gyro, sama temp (ga dipake)
+  mpu.getEvent(&a, &g, &temp); //ada accel (ga dipake), gyro, sama temp (ga dipake)
   
   //hitungan perubahan waktu
   unsigned long currentTime = 0;
